@@ -7,16 +7,19 @@ var express = require('express')
     ,bodyParser = require('body-parser');
 
 app.set('clientPath', path.join(__dirname, '../..', 'client'));
-console.log(app.get('clientPath'));
+
+console.log('rodando aplicação cliente em: ' + app.get('clientPath'));
+
 app.use(express.static(app.get('clientPath')));
+
 app.use(bodyParser.json());
 
+/* cors */
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   next();
 });
-
 
 routes(app);
 
