@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <script type="text/javascript" >
+            
+            class Codigo {
+                
+                constructor(codigo) {
+                    this._codigo = codigo
+                    this._regex = '';
+                }
+                
+                withRegex(regex) {
+                    this._regex = regex
+                    return this
+                }                
+
+                isValid() {
+                    
+                    console.log(`validando - regex: ${this._regex} - codigo: ${this._codigo}`)
+                    
+                    return this._regex.test(this._codigo)
+                }
+            }
+                        
+            console.log(`resultado: ${new Codigo('GWZ-JJ-12').withRegex(/\D{3}-\D{2}-\d{2}/).isValid()}`)
+            console.log(`resultado: ${new Codigo('1X1-JJ-12').withRegex(/\D{3}-\D{2}-\d{2}/).isValid()}`)
+            console.log(`resultado: ${new Codigo('asd-as-as').withRegex(/\D{3}-\D{2}-\d{2}/).isValid()}`)
+            
+        </script>
+    </body>
+</html>

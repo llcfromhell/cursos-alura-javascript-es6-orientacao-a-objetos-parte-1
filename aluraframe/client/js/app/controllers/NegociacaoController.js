@@ -7,35 +7,32 @@ class NegociacaoController {
         this._inputQuantidade = $("#quantidade");
         this._inputValor = $("#valor");
         
+        this._lista = new ListaNegociacao();
+        
     }
     
     adiciona(event) {
         
-        console.log(this._inputData.value)
-        
         event.preventDefault();
         
-        let negociacao = new Negociacao(
-            this.getInputDataValueAsDate(), 
+        this._lista.addNegociacao(this._criaNegociacao());
+        
+        console.log(this._lista);
+        
+        this._limpaFormulario();
+        
+    }
+    
+    _criaNegociacao() {
+        return new Negociacao(
+            DataHelper.textoParaData(this._inputData.value), 
             this._inputQuantidade.value, 
             this._inputValor.value
         );
-        
-        console.log(negociacao);
-        this.limpaFormulario();
-        
     }
     
-    getInputDataValueAsDate() {
-        
-        return new Date(...
-            this._inputData.value
-            .split('-')
-            // tem que tirar -1 do mes o JS armazena o mes a partir de 0 (0 = janeiro)
-            .map((item, indice) => item - indice % 2))
-    }
     
-    limpaFormulario() {
+    _limpaFormulario() {
         this._inputData.value = null;
         this._inputQuantidade.value = null
         this._inputValor.value = null;

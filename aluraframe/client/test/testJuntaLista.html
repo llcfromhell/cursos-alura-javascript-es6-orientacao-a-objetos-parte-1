@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <script type="text/javascript">
+        
+            class ImpressorDeLista {
+                
+                constructor() {
+                    this._lista = []
+                }
+                
+                add(lista) {
+                    this._lista = this._lista.concat(lista)
+                    return this
+                }
+                
+                exibeNoConsole() {
+                    this._lista.forEach(i => console.log(`Item - ${i}`))
+                }
+            }
+
+            let impressorDeLista = new ImpressorDeLista ();  
+            
+            let listaDeNomes1 = ['Flávio', 'Rogers', 'Júlia'];
+            
+            let listaDeNomes2 = ['Vieira', 'Fernanda', 'Gerson'];
+            
+            impressorDeLista
+                .add(listaDeNomes1)
+                .add(listaDeNomes2)
+                .exibeNoConsole();
+        
+        </script>
+    </body>
+</html>
