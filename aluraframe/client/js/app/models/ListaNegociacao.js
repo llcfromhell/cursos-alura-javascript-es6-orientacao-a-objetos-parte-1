@@ -4,7 +4,7 @@ class ListaNegociacao {
         this._negociacoes = [];
     }
     
-    get negociacioes() {
+    get negociacoes() {
         return [].concat(this._negociacoes);
     }
     

@@ -9,6 +9,8 @@ class NegociacaoController {
         
         this._lista = new ListaNegociacao();
         
+        this._negociacoesView = new NegociacoesView("#negociacoesView");
+        this._mensagemvView = new MensagemView("#mensagemView");
     }
     
     adiciona(event) {
@@ -17,9 +19,10 @@ class NegociacaoController {
         
         this._lista.addNegociacao(this._criaNegociacao());
         
-        console.log(this._lista);
-        
         this._limpaFormulario();
+        
+        this._mensagemvView.update({texto:"Negociação adicionada com sucesso."})
+        this._negociacoesView.update(this._lista.negociacoes);
         
     }
     

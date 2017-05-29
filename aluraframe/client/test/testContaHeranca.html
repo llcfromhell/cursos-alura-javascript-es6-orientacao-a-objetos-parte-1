@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+    <script type="text/javascript">
+        class Conta {
+
+            constructor(saldo = 0.0) {
+                this._saldo = saldo;
+            }
+
+            atualiza(taxa) {
+                throw 'Method not implemented'
+            }
+
+            get saldo() {
+                return this._saldo;
+            }
+        }
+
+        class ContaCorrente extends Conta {
+
+            atualiza(taxa) {
+                this._saldo += taxa;
+            }
+
+        }
+
+        class ContaPoupanca extends Conta {
+
+            atualiza(taxa) {
+                this._saldo += taxa * 2;
+            }
+
+        }
+
+
+        let conta1 = new ContaCorrente(200);
+        let conta2 = new ContaPoupanca(300);
+        conta1.atualiza(2);
+        conta2.atualiza(3);
+        console.log(conta1.saldo); //202
+        console.log(conta2.saldo); //306
+    </script>
+</body>
+
+</html>
